@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -13,5 +15,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TransactionResponseDTO {
 
-    private String message;
+    private String type;
+    private LocalDate date;
+    private Integer accountNumber;
+    private String currency;
+    private Double amount;
+    private String merchantName;
+    private String merchantLogo;
+
 }

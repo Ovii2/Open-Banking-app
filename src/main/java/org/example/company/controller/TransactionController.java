@@ -23,7 +23,7 @@ public class TransactionController {
             TransactionResponseDTO response = (TransactionResponseDTO) transactionService.findAllByAccountNumber(accountNumber);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new TransactionResponseDTO(e.getMessage()));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new TransactionResponseDTO());
         }
     }
 }

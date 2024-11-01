@@ -1,29 +1,27 @@
 package org.example.company.service;
 
-import org.example.company.dto.transaction.TransactionResponseDTO;
+
+import org.example.company.repo.TransactionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class TransactionServiceTest {
 
     private TransactionService transactionService;
+    private TransactionRepository transactionRepository;
 
     @BeforeEach
     void setUp() {
-        transactionService = new TransactionService();
+        transactionService = new TransactionService(transactionRepository);
     }
 
     @Test
-    void testFindAllByAccountNumber() {
-        Integer accountNumber = 12345;
+    public void testTransactionCount() {
+        int accountNumber = 12345;
 
-        List<TransactionResponseDTO> transactions = transactionService.findAllByAccountNumber(accountNumber);
-
-        int expectedTransactionCount = 3;
-        assertEquals(expectedTransactionCount, transactions.size(), "Expected 3 transactions but found : " + transactions.size());
+        assertEquals(1, transactionService.findAllByAccountNumber(accountNumber).size());
     }
 }
