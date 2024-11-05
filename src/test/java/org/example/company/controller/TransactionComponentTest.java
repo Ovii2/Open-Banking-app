@@ -14,7 +14,6 @@ public class TransactionComponentTest {
     @LocalServerPort
     private int port;
 
-
     @Test
     public void testApplicationEndToEnd() {
         Integer accountNumber = 12345;
@@ -25,5 +24,4 @@ public class TransactionComponentTest {
                 .then()
                 .statusCode(is(200));
     }
-
 }

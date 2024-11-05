@@ -1,6 +1,8 @@
 package org.example.company.controller;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.example.company.dto.transaction.TransactionRequestDTO;
 import org.example.company.dto.transaction.TransactionResponseDTO;
 import org.example.company.service.TransactionService;
 import org.springframework.http.HttpStatus;
@@ -20,9 +22,9 @@ public class TransactionController {
     private TransactionService transactionService;
 
     @GetMapping("/{accountNumber}")
-    public ResponseEntity<List<TransactionResponseDTO>> findAllByAccountNumber(@PathVariable Integer accountNumber) {
+    public ResponseEntity<List<TransactionResponseDTO>> findAllByAccountNumber(@Valid @PathVariable TransactionRequestDTO transactionRequestDTO) {
         try {
-            List<TransactionResponseDTO> response = transactionService.findAllByAccountNumber(accountNumber);
+            List<TransactionResponseDTO> response = transactionService.findAllByAccountNumber(transactionRequestDTO.getAccountNumber());
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(List.of());

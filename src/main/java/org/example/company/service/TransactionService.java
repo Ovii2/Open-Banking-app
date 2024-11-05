@@ -1,6 +1,7 @@
 package org.example.company.service;
 
 import lombok.AllArgsConstructor;
+import org.example.company.dto.transaction.TransactionRequestDTO;
 import org.example.company.dto.transaction.TransactionResponseDTO;
 import org.example.company.model.Transaction;
 import org.example.company.repo.TransactionRepository;
@@ -26,8 +27,7 @@ public class TransactionService {
                         transaction.getCurrency(),
                         transaction.getAmount(),
                         transaction.getMerchantName(),
-                        transaction.getMerchantLogo()
-                ))
+                        transaction.getMerchantLogo()))
                 .collect(Collectors.toList());
     }
 }

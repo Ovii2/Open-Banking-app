@@ -1,9 +1,7 @@
 package org.example.company.dto.transaction;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotEmpty;
+import lombok.*;
 
 @Data
 @Builder
@@ -12,4 +10,11 @@ import lombok.NoArgsConstructor;
 public class TransactionRequestDTO {
 
     private String merchantName;
+
+    @NotEmpty(message = "Account number cannot be empty")
+    private Integer accountNumber;
+
+    public TransactionRequestDTO(Integer accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 }
