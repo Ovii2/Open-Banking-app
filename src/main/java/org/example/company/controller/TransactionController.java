@@ -22,9 +22,9 @@ public class TransactionController {
     private TransactionService transactionService;
 
     @GetMapping("/{accountNumber}")
-    public ResponseEntity<List<TransactionResponseDTO>> findAllByAccountNumber(@Valid @PathVariable TransactionRequestDTO transactionRequestDTO) {
+    public ResponseEntity<List<TransactionResponseDTO>> findAllByAccountNumber(@PathVariable int accountNumber) {
         try {
-            List<TransactionResponseDTO> response = transactionService.findAllByAccountNumber(transactionRequestDTO.getAccountNumber());
+            List<TransactionResponseDTO> response = transactionService.findAllByAccountNumber(accountNumber);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(List.of());

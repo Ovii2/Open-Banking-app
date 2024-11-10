@@ -1,5 +1,6 @@
 package org.example.company.service;
 
+import org.example.company.OpenBankingAppApplication;
 import org.example.company.dto.transaction.TransactionResponseDTO;
 import org.example.company.model.Transaction;
 import org.example.company.repo.TransactionRepository;
@@ -13,7 +14,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+@SpringBootTest(classes = OpenBankingAppApplication.class)
 class TransactionServiceTest {
 
     @Autowired
